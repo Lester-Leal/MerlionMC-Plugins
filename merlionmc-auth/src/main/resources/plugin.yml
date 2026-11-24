@@ -1,0 +1,35 @@
+name: MerlionMCAuth
+version: '${version}'
+main: xyz.merlionmchost.auth.MerlionMCAuth
+api-version: '${minecraft}'
+description: Login and registration for offline-mode Paper servers, with MerlionMC dashboard integration.
+author: MerlionMC
+website: https://merlionmchost.xyz
+# Floodgate is optional: when it's there, Bedrock players (already checked by Xbox) skip login.
+softdepend: [floodgate]
+# Downloaded by Paper from Maven Central on first start (Argon2id password hashing).
+libraries:
+  - org.bouncycastle:bcprov-jdk18on:${bouncycastle}
+commands:
+  register:
+    description: Register your name with a password.
+    usage: /register <password> <same password again>
+    aliases: [reg]
+  login:
+    description: Log in with your password.
+    usage: /login <password>
+    aliases: [l, log]
+  changepassword:
+    description: Change your password.
+    usage: /changepassword <current password> <new password>
+    aliases: [changepw]
+  mmauth:
+    description: Manage login accounts (server console, RCON and operators).
+    usage: /mmauth list [page] | /mmauth json [page] | /mmauth reset <player>
+    permission: merlionmcauth.admin
+permissions:
+  merlionmcauth.admin:
+    # Default op only so the console and RCON (which count as op) can see the command; AdminCommand itself refuses
+    # every player, operators included. (default: false would hide it from the console and RCON too.)
+    description: List and reset login accounts.
+    default: op

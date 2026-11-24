@@ -1,0 +1,14 @@
+# Every plugin: local test server (worlds, logs, RCON password), build output, Gradle and IDE files.
+*/run/
+*/build/
+*/.gradle/
+.gradle/
+.idea/
+*.iml
+out/
+.vscode/
+
+# Kept on this machine only: internal plans, and icon sizes uploaded to Modrinth by hand.
+*/PLAN.md
+*/branding/icon-512.png
+*/branding/icon-1024.png
